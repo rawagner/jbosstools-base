@@ -40,6 +40,7 @@ import org.eclipse.ui.wizards.IWizardDescriptor;
 public class WorkbenchUtils {
 
 	static public IWizard findWizardByDefId(String definitionId) {
+		System.out.println("WorkbenchUtils");
 		IWizardDescriptor aWizardDescr = getWorkbench().getNewWizardRegistry()
 				.findWizard(definitionId);
 		TestCase.assertNotNull("Cannot find wizard " + definitionId //$NON-NLS-1$
@@ -54,6 +55,7 @@ public class WorkbenchUtils {
 	}
 
 	public static IWorkbench getWorkbench() {
+		System.out.println("WorkbenchUtils");
 		return PlatformUI.getWorkbench();
 	}
 
@@ -61,6 +63,7 @@ public class WorkbenchUtils {
 	 * @return
 	 */
 	public static IWorkbenchPage getWorkbenchActivePage() {
+		System.out.println("WorkbenchUtils");
 		return getWorkbench().getActiveWorkbenchWindow().getActivePage();
 	}
 
@@ -71,14 +74,17 @@ public class WorkbenchUtils {
 	 * @return active workbench window shell
 	 */
 	public static Shell getActiveShell() {
+		System.out.println("WorkbenchUtils");
 		return getWorkbench().getActiveWorkbenchWindow().getShell();
 	}
 
 	public static PreferenceManager getPreferenceManager() {
+		System.out.println("WorkbenchUtils");
 		return getWorkbench().getPreferenceManager();
 	}
 
 	public static PreferenceDialog createPreferenceDialog(String pageId) {
+		System.out.println("WorkbenchUtils");
 		PreferenceDialog dialog = PreferencesUtil.createPreferenceDialogOn(WorkbenchUtils
 				.getActiveShell(), pageId, new String[] {pageId}, null);
 		dialog.setBlockOnOpen(false);
@@ -87,15 +93,18 @@ public class WorkbenchUtils {
 
 	public static PreferenceDialog createPropertyDialog(String pageId,
 			IProject project) {
+		System.out.println("WorkbenchUtils");
 		return PreferencesUtil.createPropertyDialogOn(WorkbenchUtils
 				.getActiveShell(), project, pageId, new String[] {pageId}, null);
 	}
 	
 	public static IEditorPart openEditor(String inputFile) {
+		System.out.println("WorkbenchUtils");
 		return openEditor(new Path(inputFile));
 	}
 	
 	public static IEditorPart openEditor(IPath inputFile) {
+		System.out.println("WorkbenchUtils");
 		IEditorPart part = null;
 		try {
 			part = IDE.openEditor(getWorkbenchActivePage(),ResourcesPlugin.getWorkspace().getRoot().getFile(inputFile));
@@ -106,6 +115,7 @@ public class WorkbenchUtils {
 	}
 	
 	public static IEditorPart openEditor(String inputFile, String editorId) {
+		System.out.println("WorkbenchUtils");
 		IEditorPart part = null;
 		try {
 			part = IDE.openEditor(getWorkbenchActivePage(),ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(inputFile)),editorId);
@@ -116,6 +126,7 @@ public class WorkbenchUtils {
 	}
 	
 	public static IEditorPart openEditor(IFile inputFile, String editorId) {
+		System.out.println("WorkbenchUtils");
 		IEditorPart part = null;
 		try {
 			part = IDE.openEditor(getWorkbenchActivePage(),inputFile,editorId);
@@ -126,6 +137,7 @@ public class WorkbenchUtils {
 	}
 
 	public static void closeAllEditors() {
+		System.out.println("WorkbenchUtils");
 		getWorkbenchActivePage().closeAllEditors(false);
 	}
 }

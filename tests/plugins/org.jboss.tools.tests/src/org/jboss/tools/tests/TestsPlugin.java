@@ -24,7 +24,7 @@ public class TestsPlugin extends AbstractUIPlugin {
 	 * 
 	 */
 	public TestsPlugin() {
-		
+		System.out.println("TestsPlugin");
 	}
 
 }

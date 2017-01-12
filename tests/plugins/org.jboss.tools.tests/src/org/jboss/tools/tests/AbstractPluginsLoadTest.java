@@ -39,6 +39,7 @@ public class AbstractPluginsLoadTest extends AbstractRuntimeTest {
 	private static final String ID_ATTRIBUTE_NAME = "id"; 
 
 	public void testBundlesAreLoadedFor(final String featureId) {
+		System.out.println("AbstractPluginsLoadTest");
 		Bundle firstBundle = getFirstBundleFor(featureId);
 		File bundleLocation = null;
 		try {
@@ -76,6 +77,7 @@ public class AbstractPluginsLoadTest extends AbstractRuntimeTest {
 	}
 
 	public void assertPluginsResolved(Bundle[] bundles) {
+		System.out.println("AbstractPluginsLoadTest");
 		for (Bundle bundle : bundles) {
 			assertTrue("Plugin '" + bundle.getSymbolicName() + "' is not resolved", //$NON-NLS-1$ //$NON-NLS-2$
 					isPluginResolved(bundle.getSymbolicName()));
@@ -84,10 +86,12 @@ public class AbstractPluginsLoadTest extends AbstractRuntimeTest {
 	}
 	
 	public void assertPluginResolved(Bundle bundle) {
+		System.out.println("AbstractPluginsLoadTest");
 		assertPluginsResolved(new Bundle[] {bundle});
 	}
 	
 	public void assertPluginsResolved(String[] ids) {
+		System.out.println("AbstractPluginsLoadTest");
 		for (String id : ids) {
 			Bundle bundle = Platform.getBundle(id);
 			assertNotNull(MessageFormat.format("Could not get bundle {0} instance",id), bundle);
@@ -98,6 +102,7 @@ public class AbstractPluginsLoadTest extends AbstractRuntimeTest {
 	}
 	
 	public void assertPluginResolved(String id) {
+		System.out.println("AbstractPluginsLoadTest");
 		assertPluginsResolved(new String[] {id});
 	}
 }

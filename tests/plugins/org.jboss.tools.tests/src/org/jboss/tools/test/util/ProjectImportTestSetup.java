@@ -34,6 +34,7 @@ public class ProjectImportTestSetup extends TestSetup {
 	 */
 	public ProjectImportTestSetup(Test test, String bundleName, String projectPath, String projectName) {
 		super(test);
+		System.out.println("ProjectImportTestSetup");
 		this.bundleName = bundleName;
 		this.projectPaths = new String[]{projectPath};
 		this.projectNames = new String[]{projectName};
@@ -41,16 +42,19 @@ public class ProjectImportTestSetup extends TestSetup {
 
 	public ProjectImportTestSetup(Test test, String bundleName, String[] projectPaths, String[] projectNames) {
 		super(test);
+		System.out.println("ProjectImportTestSetup");
 		this.bundleName = bundleName;
 		this.projectPaths = projectPaths;
 		this.projectNames = projectNames;
 	}
 
 	public IProject importProject() throws Exception {
+		System.out.println("ProjectImportTestSetup");
 		return importProjects()[0];
 	}
 
 	public IProject[] importProjects() throws Exception {
+		System.out.println("ProjectImportTestSetup");
 		projects = new IProject[projectPaths.length]; 
 		JobUtils.waitForIdle();
 		for (int i = 0; i < projectPaths.length; i++) {
@@ -61,6 +65,7 @@ public class ProjectImportTestSetup extends TestSetup {
 	}
 
 	public static IProject loadProject(String projectName) throws CoreException {
+		System.out.println("ProjectImportTestSetup");
 		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
 		assertNotNull("Can't load " + projectName, project); //$NON-NLS-1$
 		try {
@@ -74,11 +79,13 @@ public class ProjectImportTestSetup extends TestSetup {
 
 	@Override
 	protected void setUp() throws Exception {
+		System.out.println("ProjectImportTestSetup");
 		importProjects();
 	}
 
 	@Override
 	protected void tearDown() throws Exception {
+		System.out.println("ProjectImportTestSetup");
 		boolean saveAutoBuild = ResourcesUtils.setBuildAutomatically(false);
 		for (int i = 0; i < projectNames.length; i++) {
 			ResourcesUtils.deleteProject(projectNames[i]);
@@ -88,6 +95,7 @@ public class ProjectImportTestSetup extends TestSetup {
 	}
 
 	public void deleteProjects() throws Exception {
+		System.out.println("ProjectImportTestSetup");
 		tearDown();
 	}
 }

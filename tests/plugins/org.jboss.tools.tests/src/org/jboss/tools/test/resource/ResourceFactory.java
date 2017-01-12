@@ -25,16 +25,19 @@ import org.jboss.tools.test.util.ResourcesUtils;
 public class ResourceFactory {
 	
 	static public final IFile createFile(String content) {
+		System.out.println("ResourceFactory - createFile");
 		Object proxy = Proxy.newProxyInstance(IFile.class.getClassLoader(), new Class<?> [] {IFile.class}, new FileInvocationHandler(content));
 		return (IFile)proxy;
 	}
 	
 	static public final IFile createFile(String content, IPath fullPath) {
+		System.out.println("ResourceFactory - createFile1");
 		Object proxy = Proxy.newProxyInstance(IFile.class.getClassLoader(), new Class<?> [] {IFile.class}, new FileInvocationHandler(content,fullPath));
 		return (IFile)proxy;
 	}
 	
 	static public final IFile createFile(String content, String project, String fileName) throws CoreException, IOException {
+		System.out.println("ResourceFactory - createFile2");
 		IProject prj = ResourcesUtils.createEclipseProject("Test");
 		IFile result = prj.getFile(fileName);
 		result.create(new StringBufferInputStream(content), true, null);
@@ -48,16 +51,19 @@ public class ResourceFactory {
 
 		public FileInvocationHandler(String content) {
 			super();
+			System.out.println("ResourceFactory - FileInvocationHandler");
 			this.content = content;
 		}
 
 		public FileInvocationHandler(String content,IPath fullPath) {
 			this(content);
+			System.out.println("ResourceFactory - FileInvocationHandler1");
 			this.fullPath = fullPath;
 		}
 
 		public Object invoke(Object proxy, Method method, Object[] args)
 				throws Throwable {
+			System.out.println("ResourceFactory - FileInvocationHandler - invoke");
 			Object result =  null;
 			if(method.equals(IFile.class.getMethod("getContents"))) {
 				result = new StringBufferInputStream(content);

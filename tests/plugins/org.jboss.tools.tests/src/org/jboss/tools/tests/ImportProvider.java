@@ -36,12 +36,14 @@ public class ImportProvider implements IImportStructureProvider {
 	 */
 	public ImportProvider() {
 		super();
+		System.out.println("ImportProvider");
 	}
 
 	/*
 	 * (non-Javadoc) Method declared on IImportStructureProvider
 	 */
 	public List<File> getChildren(Object element) {
+		System.out.println("ImportProvider");
 		File folder = (File) element;
 		String[] children = folder.list();
 		int childrenLength = children == null ? 0 : children.length;
@@ -59,6 +61,7 @@ public class ImportProvider implements IImportStructureProvider {
 	 * (non-Javadoc) Method declared on IImportStructureProvider
 	 */
 	public InputStream getContents(Object element) {
+		System.out.println("ImportProvider");
 		try {
 			return new FileInputStream((File) element);
 		} catch (FileNotFoundException e) {
@@ -71,6 +74,7 @@ public class ImportProvider implements IImportStructureProvider {
 	 * (non-Javadoc) Method declared on IImportStructureProvider
 	 */
 	public String getFullPath(Object element) {
+		System.out.println("ImportProvider");
 		return ((File) element).getPath();
 	}
 
@@ -78,6 +82,7 @@ public class ImportProvider implements IImportStructureProvider {
 	 * (non-Javadoc) Method declared on IImportStructureProvider
 	 */
 	public String getLabel(Object element) {
+		System.out.println("ImportProvider");
 
 		// Get the name - if it is empty then return the path as it is a file
 		// root
@@ -93,14 +98,17 @@ public class ImportProvider implements IImportStructureProvider {
 	 * (non-Javadoc) Method declared on IImportStructureProvider
 	 */
 	public boolean isFolder(Object element) {
+		System.out.println("ImportProvider");
 		return ((File) element).isDirectory();
 	}
 
 	public List<String> getUnimportedFiles() {
+		System.out.println("ImportProvider");
 		return unimportedFiles;
 	}
 
 	public void setUnimportedFiles(List<String> unimportedFiles) {
+		System.out.println("ImportProvider");
 		this.unimportedFiles = unimportedFiles;
 	}
 

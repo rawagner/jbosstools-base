@@ -25,9 +25,11 @@ public class PreferencePageTest {
 	Class<?extends PreferencePage> instanceOf;
 	
 	public PreferencePageTest() {
+		System.out.println("PreferencePageTest");
 	}
 	
 	public PreferencePageTest(String prefPageId, Class<?extends PreferencePage> instanceOf) {
+		System.out.println("PreferencePageTest");
 		this.prefPageId = prefPageId;
 		this.instanceOf = instanceOf;
 	}
@@ -37,6 +39,7 @@ public class PreferencePageTest {
 	 * and verifies that it is an instance of provided class
 	 */
 	public void doDefaultTest(String id, Class instanceOf) {
+		System.out.println("PreferencePageTest");
 		PreferenceDialog prefDialog = 
 			WorkbenchUtils.createPreferenceDialog(
 					id);
@@ -53,6 +56,7 @@ public class PreferencePageTest {
 	}
 	
 	public void doDefaultTest() {
+		System.out.println("PreferencePageTest");
 		doDefaultTest(prefPageId,instanceOf);
 	}
 }

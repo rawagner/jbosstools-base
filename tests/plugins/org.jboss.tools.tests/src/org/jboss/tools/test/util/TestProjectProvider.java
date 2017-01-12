@@ -51,6 +51,7 @@ public class TestProjectProvider {
 	 * @throws Exception
 	 */
 	public TestProjectProvider(String bundleName, String projectPath, String name, boolean makeCopy) throws CoreException {
+		System.out.println("TestDescriptionFactory");
 		try {
 			project = ResourcesPlugin.getWorkspace().getRoot().getProject(name);
 			if(project != null && !project.isAccessible()) {
@@ -72,10 +73,12 @@ public class TestProjectProvider {
 	}
 	
 	public IProject getProject() {
+		System.out.println("TestDescriptionFactory");
 		return project;
 	}
 	
 	public void dispose() {
+		System.out.println("TestDescriptionFactory");
 		if (project == null || !project.exists()) {
 			return;
 		}
@@ -104,6 +107,7 @@ public class TestProjectProvider {
 	TestDescriptionFactory tests = null;
 	
 	public Set<TestDescription> getTestDescriptions() {
+		System.out.println("TestDescriptionFactory");
 		if(tests == null && project != null && project.isOpen()) {
 			IFile f = project.getFile(new Path("/testCases.xml"));
 			tests = new TestDescriptionFactory(f); 
@@ -112,6 +116,7 @@ public class TestProjectProvider {
 	}
 	
 	public ArrayList<TestDescription> getTestDescriptions(String name) {
+		System.out.println("TestDescriptionFactory");
 		getTestDescriptions();
 		return (tests != null) ? tests.getTestDescriptions(name) : null;
 	}

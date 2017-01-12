@@ -25,14 +25,17 @@ public class JobUtils {
 	private static final long DEFAULT_DELAY = 500;
 
 	public static void waitForIdle() {
+		System.out.println("JobUtils - waitForIdle");
 		waitForIdle(DEFAULT_DELAY);
 	}
 
 	public static void waitForIdle(long delay) {
+		System.out.println("JobUtils - waitForIdle1");
 		waitForIdle(delay, MAX_IDLE);
 	}
 
 	public static void waitForIdle(long delay, long maxIdle) {
+		System.out.println("JobUtils - waitForIdle2");
 		long start = System.currentTimeMillis();
 		while (!isIdle()) {
 			delay(delay);
@@ -53,6 +56,7 @@ public class JobUtils {
 	}
 	
 	private static boolean isIdle() {
+		System.out.println("JobUtils - isIdle");
 		boolean isIdle = Job.getJobManager().isIdle();
 		if (!isIdle) {
 			Job[] jobs = Job.getJobManager().find(null);
@@ -78,6 +82,7 @@ public class JobUtils {
 	 * @return
 	 */
 	private static boolean shouldIgnoreJob(Job job) {
+		System.out.println("JobUtils - shouldIgnoreJob");
 		for (String name : IGNORE_JOBS_NAMES) {
 			if (name != null && job != null && job.getName() != null && 
 					name.equalsIgnoreCase(job.getName().trim())) {
@@ -89,6 +94,7 @@ public class JobUtils {
 	}
 
 	public static void delay(long waitTimeMillis) {
+		System.out.println("JobUtils - delay");
 		Display display = Display.getCurrent();
 		if(PlatformUI.isWorkbenchRunning() && display!= null) {
 			DisplayDelayHelper delay = new DisplayDelayHelper(waitTimeMillis);
@@ -103,6 +109,7 @@ public class JobUtils {
 	}
 
 	public static void runDeferredEvents() {
+		System.out.println("JobUtils - runDeferredEvents");
 		while( Display.getCurrent().readAndDispatch());
 	}
 }

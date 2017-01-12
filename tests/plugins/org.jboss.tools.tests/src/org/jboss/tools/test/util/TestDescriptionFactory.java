@@ -47,6 +47,7 @@ public class TestDescriptionFactory {
 	Map<String, ArrayList<TestDescription>> testDescriptionsMap = new HashMap<String, ArrayList<TestDescription>>();
 	
 	public TestDescriptionFactory(IFile file) {
+		System.out.println("TestDescriptionFactory");
 		this.file = file;
 	}
 
@@ -55,6 +56,7 @@ public class TestDescriptionFactory {
 	 * @return
 	 */
 	public Set<TestDescription> getTestDescriptions() {
+		System.out.println("TestDescriptionFactory");
 		if(testDescriptions != null) return testDescriptions;
 		testDescriptions = new HashSet<TestDescription>();
 		if(file == null || !file.exists()) return null;
@@ -74,6 +76,7 @@ public class TestDescriptionFactory {
 	 * @return
 	 */	
 	public ArrayList<TestDescription> getTestDescriptions(String name) {
+		System.out.println("TestDescriptionFactory");
 		getTestDescriptions();
 		if(testDescriptions == null) return null;
 		ArrayList<TestDescription> set = testDescriptionsMap.get(name);

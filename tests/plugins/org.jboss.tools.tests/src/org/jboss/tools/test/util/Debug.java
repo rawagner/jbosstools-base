@@ -21,6 +21,7 @@ public class Debug {
 	}
 	
     private static boolean getDebugOption(String option) {
+    	System.out.println("Debug - getDebugOption");
         return "true".equalsIgnoreCase(Platform.getDebugOption(TestsPlugin.ID + option)); //$NON-NLS-1$
     }
 }

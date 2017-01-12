@@ -42,6 +42,7 @@ public class AbstractResourceMarkerTest extends TestCase implements IAnnotationT
 	 * @return the project
 	 */
 	public IProject getProject() {
+		System.out.println("AbstractResourceMarkerTest");
 		return project;
 	}
 
@@ -49,6 +50,7 @@ public class AbstractResourceMarkerTest extends TestCase implements IAnnotationT
 	 * @param project the project to set
 	 */
 	public void setProject(IProject project) {
+		System.out.println("AbstractResourceMarkerTest");
 		this.project = project;
 	}
 
@@ -56,6 +58,7 @@ public class AbstractResourceMarkerTest extends TestCase implements IAnnotationT
 	 * 
 	 */
 	public AbstractResourceMarkerTest() {
+		System.out.println("AbstractResourceMarkerTest");
 	}
 
 	/**
@@ -63,9 +66,11 @@ public class AbstractResourceMarkerTest extends TestCase implements IAnnotationT
 	 */
 	public AbstractResourceMarkerTest(String name) {
 		super(name);
+		System.out.println("AbstractResourceMarkerTest");
 	}
 	
 	protected void copyContentsFile(String originalName, String newContentName) throws CoreException{
+		System.out.println("AbstractResourceMarkerTest");
 		IFile originalFile = project.getFile(originalName);
 		IFile newContentFile = project.getFile(newContentName);
 		
@@ -73,11 +78,13 @@ public class AbstractResourceMarkerTest extends TestCase implements IAnnotationT
 	}
 	
 	protected void copyContentsFile(IFile originalFile, String newContentName) throws CoreException{
+		System.out.println("AbstractResourceMarkerTest");
 		IFile newContentFile = project.getFile(newContentName);
 		copyContentsFile(originalFile, newContentFile);
 	}
 
 	protected void copyContentsFile(IFile originalFile, IFile newContentFile) throws CoreException {
+		System.out.println("AbstractResourceMarkerTest");
 		assertTrue(originalFile.exists());
 		assertTrue(newContentFile.exists());
 		InputStream is = null;
@@ -99,6 +106,7 @@ public class AbstractResourceMarkerTest extends TestCase implements IAnnotationT
 
 	public static int findMarkerLine(IResource resource, String type, String errorMessage, boolean pattern)
 			throws CoreException {
+		System.out.println("AbstractResourceMarkerTest");
 		int number = -1;
 		List<Integer> lines = findMarkerLines(resource, type, errorMessage, pattern);
 		if(!lines.isEmpty()) {
@@ -109,11 +117,13 @@ public class AbstractResourceMarkerTest extends TestCase implements IAnnotationT
 
 	public static List<Integer> findMarkerLines(IResource resource, String type,
 			String pattern) throws CoreException {
+		System.out.println("AbstractResourceMarkerTest");
 		return findMarkerLines(resource, type, pattern, true);
 	}
 
 	public static List<Integer> findMarkerLines(IResource resource, String type,
 			String errorMessage, boolean pattern) throws CoreException {
+		System.out.println("AbstractResourceMarkerTest");
 		List<Integer> numbers = new ArrayList<Integer>();
 		IMarker[] markers = findMarkers(resource, type, errorMessage, pattern);
 		for (int i = 0; i < markers.length; i++) {
@@ -124,10 +134,12 @@ public class AbstractResourceMarkerTest extends TestCase implements IAnnotationT
 	}
 
 	public static IMarker[] findMarkers(IResource resource, String type, String pattern) throws CoreException {
+		System.out.println("AbstractResourceMarkerTest");
 		return findMarkers(resource, type, pattern, true);
 	}
 
 	public static IMarker[] findMarkers(IResource resource, String type, String errorMessage, boolean pattern) throws CoreException {
+		System.out.println("AbstractResourceMarkerTest");
 		List<IMarker> result = new ArrayList<IMarker>();
 		IMarker[] markers = resource.findMarkers(type, true, IResource.DEPTH_INFINITE);
 		for (int i = 0; i < markers.length; i++) {
@@ -140,16 +152,18 @@ public class AbstractResourceMarkerTest extends TestCase implements IAnnotationT
 	}
 
 	public static void assertMarkerIsCreated(IResource resource, MarkerData markerData) throws CoreException {
+		System.out.println("AbstractResourceMarkerTest");
 		assertMarkerIsCreated(resource, markerData.type, markerData.pattern, true, markerData.line);
 	}
 
 	public static void assertMarkerIsCreated(IResource resource, String type, String pattern, int... expectedLines) throws CoreException {
+		System.out.println("AbstractResourceMarkerTest");
 		assertMarkerIsCreated(resource, type, pattern, true, expectedLines);
 	}
 
 	public static void assertMarkerIsCreated(IResource resource, String type, String errorMessage, boolean pattern, int... expectedLines) 
 		throws CoreException {
-
+		System.out.println("AbstractResourceMarkerTest");
 		List<Integer> lines = findMarkerLines(
 				resource, type, errorMessage, pattern);
 
@@ -205,6 +219,7 @@ public class AbstractResourceMarkerTest extends TestCase implements IAnnotationT
 	public static void assertMarkerIsCreatedForGivenPosition(
 			IResource resource, String type, String pattern, int lineNumber,
 			int startPosition, int endPosition) throws CoreException {
+		System.out.println("AbstractResourceMarkerTest");
 		try {
 			//for Windows, where line delimiter is replaced by \r\n
 			int lineDelimiterLength = getLineDelimiterLength(resource);
@@ -235,6 +250,7 @@ public class AbstractResourceMarkerTest extends TestCase implements IAnnotationT
 	}
 
 	static int getLineDelimiterLength(IResource resource) throws CoreException, IOException {
+		System.out.println("AbstractResourceMarkerTest");
 		IFile f = (IFile)resource;
 		InputStream is = f.getContents();
 		byte[] b = new byte[512];
@@ -251,22 +267,26 @@ public class AbstractResourceMarkerTest extends TestCase implements IAnnotationT
 	}
 
 	public static void assertMarkerIsNotCreated(IResource resource, String type, String pattern) throws CoreException {
+		System.out.println("AbstractResourceMarkerTest");
 		IMarker[] markers = findMarkers(resource, type, pattern);
 
 		assertFalse("Marker matches the '" + pattern + "' pattern was found", markers.length>0); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	public static void assertMarkerIsNotCreated(IResource resource, String type, String pattern, int expectedLine) throws CoreException {
+		System.out.println("AbstractResourceMarkerTest");
 		assertMarkerIsNotCreated(resource, type, pattern, true, expectedLine);
 	}
 
 	public static void assertMarkerIsNotCreated(IResource resource, String type, String errorMessage, boolean pattern, int expectedLine) throws CoreException {
+		System.out.println("AbstractResourceMarkerTest");
 		List<Integer> lines = findMarkerLines(resource, type, errorMessage, pattern);
 
 		assertFalse("Marker matches the '" + errorMessage + "' pattern was found", lines.contains(expectedLine)); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	public static void assertMarkerIsCreated(IResource resource, String type, String pattern) throws CoreException {
+		System.out.println("AbstractResourceMarkerTest");
 		IMarker[] markers = findMarkers(resource, type, pattern);
 
 		assertTrue("Marker matches the '" + pattern + "' pattern wasn't found",  //$NON-NLS-1$ //$NON-NLS-2$
@@ -274,16 +294,19 @@ public class AbstractResourceMarkerTest extends TestCase implements IAnnotationT
 	}
 
 	public static void assertMarkersIsCreated(IResource resource, MarkerData[] markersData) throws CoreException {
+		System.out.println("AbstractResourceMarkerTest");
 		for (MarkerData markerData : markersData) {
 			assertMarkerIsCreated(resource, markerData);
 		}
 	}
 
 	public static int getMarkersNumber(IResource resource) {
+		System.out.println("AbstractResourceMarkerTest");
 		return getMarkersNumber(resource, null);
 	}
 
 	public static int getMarkersNumber(IResource resource, IMarkerFilter filter) {
+		System.out.println("AbstractResourceMarkerTest");
 		try{
 			IMarker[] markers = resource.findMarkers(null, true, IResource.DEPTH_INFINITE);
 			int length = markers.length;
@@ -301,10 +324,14 @@ public class AbstractResourceMarkerTest extends TestCase implements IAnnotationT
 	}
 
 	public static String[] getMarkersMessage(IResource resource) {
+		
+		System.out.println("AbstractResourceMarkerTest");
 		return getMarkersMessage(resource, null);
 	}
 
 	public static String[] getMarkersMessage(IResource resource, IMarkerFilter filter) {
+		
+		System.out.println("AbstractResourceMarkerTest");
 		List<String> messages = new ArrayList<String>();
 		try{
 			IMarker[] markers = resource.findMarkers(null, true, IResource.DEPTH_INFINITE);
@@ -322,10 +349,13 @@ public class AbstractResourceMarkerTest extends TestCase implements IAnnotationT
 	}
 
 	public static Integer[] getMarkersNumbersOfLine(IResource resource) {
+		
+		System.out.println("AbstractResourceMarkerTest");
 		return getMarkersNumbersOfLine(resource, null);
 	}
 
 	public static Integer[] getMarkersNumbersOfLine(IResource resource, IMarkerFilter filter) {
+		System.out.println("AbstractResourceMarkerTest");
 		List<Integer> numbers = new ArrayList<Integer>();
 		try{
 			IMarker[] markers = resource.findMarkers(null, true, IResource.DEPTH_INFINITE);
@@ -343,6 +373,8 @@ public class AbstractResourceMarkerTest extends TestCase implements IAnnotationT
 	}
 
 	public static int getMarkersNumberByGroupName(String type, IResource resource, String messageGroup) {
+		
+		System.out.println("AbstractResourceMarkerTest");
 		try{
 			IMarker[] markers = resource.findMarkers(type, true, IResource.DEPTH_INFINITE);
 			int length = markers.length;
@@ -360,6 +392,8 @@ public class AbstractResourceMarkerTest extends TestCase implements IAnnotationT
 	}
 
 	public static int getMarkersNumberByGroupName(IResource resource, String messageGroup) {
+		
+		System.out.println("AbstractResourceMarkerTest");
 		return getMarkersNumberByGroupName(MARKER_TYPE, resource, messageGroup);
 	}
 
@@ -406,52 +440,69 @@ public class AbstractResourceMarkerTest extends TestCase implements IAnnotationT
 	}
 
 	public static void assertMarkerIsCreated(IResource resource, String pattern, int... expectedLines) throws CoreException {
+		
+		System.out.println("AbstractResourceMarkerTest");
 		assertMarkerIsCreated(resource, pattern, true, expectedLines);
 	}
 
 	public static void assertMarkerIsCreated(IResource resource, String message, boolean pattern, int... expectedLines) throws CoreException {
+		
+		System.out.println("AbstractResourceMarkerTest");
 		assertMarkerIsCreated(resource, AbstractResourceMarkerTest.MARKER_TYPE, pattern?convertMessageToPatern(message):message, pattern, expectedLines);
 	}
 
 	public static void assertMarkerIsNotCreated(IResource resource, String message) throws CoreException {
+		System.out.println("AbstractResourceMarkerTest");
 		assertMarkerIsNotCreated(resource, AbstractResourceMarkerTest.MARKER_TYPE, convertMessageToPatern(message));
 	}
 
 	public static void assertMarkerIsNotCreated(IResource resource, String message, int expectedLine) throws CoreException {
+		System.out.println("AbstractResourceMarkerTest");
 		assertMarkerIsNotCreated(resource, AbstractResourceMarkerTest.MARKER_TYPE, convertMessageToPatern(message), expectedLine);
 	}
 
 	public static void assertMarkerIsCreatedForGivenPosition(IResource resource, String message, int lineNumber, int startPosition, int endPosition) throws CoreException {
+		System.out.println("AbstractResourceMarkerTest");
 		assertMarkerIsCreatedForGivenPosition(resource, AbstractResourceMarkerTest.MARKER_TYPE, convertMessageToPatern(message), lineNumber, startPosition, endPosition);
 	}
 
 	public static String convertMessageToPatern(String message) {
+		
+		System.out.println("AbstractResourceMarkerTest");
 		return message.replace("[", "\\[").replace("]", "\\]").replace("<", "\\<").replace(">", "\\>").replace("(", "\\(").replace(")", "\\)")
 				.replace("{", "\\{").replace("}", "\\}").replace("'", "\\'");
 	}
 
 	@Override
 	public void assertAnnotationIsCreated(IResource resource, String pattern, int... expectedLines) throws CoreException {
+		
+		System.out.println("AbstractResourceMarkerTest");
 		assertMarkerIsCreated(resource, pattern, expectedLines);		
 	}
 
 	@Override
 	public void assertAnnotationIsCreated(IResource resource, String message, boolean pattern, int... expectedLines) throws CoreException {
+		
+		System.out.println("AbstractResourceMarkerTest");
 		assertMarkerIsCreated(resource, message, pattern, expectedLines);
 	}
 
 	@Override
 	public void assertAnnotationIsNotCreated(IResource resource, String message) throws CoreException {
+		System.out.println("AbstractResourceMarkerTest");
 		assertMarkerIsNotCreated(resource, message);
 	}
 
 	@Override
 	public void assertAnnotationIsNotCreated(IResource resource, String message, int expectedLine) throws CoreException {
+		
+		System.out.println("AbstractResourceMarkerTest");
 		assertMarkerIsNotCreated(resource, message, expectedLine);
 	}
 
 	@Override
 	public void assertAnnotationIsCreatedForGivenPosition(IResource resource, String message, int lineNumber, int startPosition, int endPosition) throws CoreException {
+		System.out.println("AbstractResourceMarkerTest");
 		assertMarkerIsCreatedForGivenPosition(resource, message, lineNumber, startPosition, endPosition);
 	}
 }

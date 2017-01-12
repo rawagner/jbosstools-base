@@ -20,6 +20,7 @@ import org.eclipse.ui.dialogs.PreferencesUtil;
 public class PreferencePageAbstractTest extends TestCase {
 
 	public boolean createPreferencePage(String id, Class expectedInstance) {
+		System.out.println("JobUtils - createPreferencePage");
 		PreferenceDialog prefDialog = createPreferenceDialog(id);
 		
 		try {
@@ -35,6 +36,7 @@ public class PreferencePageAbstractTest extends TestCase {
 	}
 	
 	public void pressOkOnPreferencePage(String ID) {
+		System.out.println("JobUtils - pressOkOnPreferencePage");
 		PreferenceDialog prefDialog = WorkbenchUtils.createPreferenceDialog(ID);
 	
 		try {
@@ -49,6 +51,7 @@ public class PreferencePageAbstractTest extends TestCase {
 	}
 
 	public static PreferenceDialog createPreferenceDialog(String pageId) {
+		System.out.println("JobUtils - createPreferenceDialog");
 		PreferenceDialog dialog = PreferencesUtil.createPreferenceDialogOn(
 				 PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), pageId, new String[] {pageId}, null);
 		dialog.setBlockOnOpen(false);

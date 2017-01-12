@@ -30,6 +30,7 @@ public abstract class DisplayHelper {
 	 * Creates a new instance.
 	 */
 	protected DisplayHelper() {
+		System.out.println("DisplayHelper");
 	}
 	
 	/**
@@ -48,6 +49,7 @@ public abstract class DisplayHelper {
 	 *         <code>false</code> if the timeout elapsed
 	 */
 	public final boolean waitForCondition(Display display, long timeout) {
+		System.out.println("DisplayHelper");
 		// if the condition already holds, succeed
 		if (condition())
 			return true;
@@ -95,6 +97,7 @@ public abstract class DisplayHelper {
 	 * @param millis the timeout in milliseconds
 	 */
 	public static void sleep(Display display, long millis) {
+		System.out.println("DisplayHelper");
 		new DisplayHelper() {
 			public boolean condition() {
 				return false;
@@ -119,6 +122,7 @@ public abstract class DisplayHelper {
 	 *         <code>false</code> if not
 	 */
 	public static boolean runEventLoop(Display display, long timeout) {
+		System.out.println("DisplayHelper");
 		if (timeout < 0)
 			return false;
 		
@@ -155,6 +159,7 @@ public abstract class DisplayHelper {
 	 *         <code>true</code> at least once
 	 */
 	private static boolean driveEventQueue(Display display) {
+		System.out.println("DisplayHelper");
 		boolean events= false;
 		while (display.readAndDispatch()) {
 			events= true;
@@ -183,6 +188,7 @@ public abstract class DisplayHelper {
 	 *         <code>false</code> if the timeout elapsed
 	 */
 	public final boolean waitForCondition(Display display, long timeout, long interval) {
+		System.out.println("DisplayHelper");
 		// if the condition already holds, succeed
 		if (condition())
 			return true;
@@ -224,6 +230,7 @@ public abstract class DisplayHelper {
 	 * @param finalTimeout
 	 */
 	private boolean driveEventQueue(Display display, long finalTimeout) {
+		System.out.println("DisplayHelper");
 		boolean events= false;
 		while (display.readAndDispatch() && finalTimeout > System.currentTimeMillis()) {
 			events= true;
@@ -236,6 +243,7 @@ public abstract class DisplayHelper {
 	 * @return
 	 */
 	private long calculateFinalTimeout(long timeout) {
+		System.out.println("DisplayHelper");
 		long currentTimeMillis= System.currentTimeMillis();
 		long finalTimeout= timeout + currentTimeMillis;
 		if (finalTimeout < currentTimeMillis)

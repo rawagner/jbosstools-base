@@ -29,12 +29,13 @@ public class TestSuiteWithParams extends TestSuite {
 	
 	public TestSuiteWithParams(Class<?> theClass, Properties params) {
 		super(theClass);
+		System.out.println("TestSuiteWithParams");
 		this.parameters.putAll(params);
 	}
 
 	@Override
 	public void runTest(Test test, TestResult result) {
-		
+		System.out.println("TestSuiteWithParams");
 		for (Object property : parameters.keySet()) {
 			String propertyName = property.toString();
 			try {

@@ -23,6 +23,7 @@ import junit.framework.TestCase;
 public class JUnitUtils {
 	
 	public static void fail(String message,Exception e) {
+		System.out.println("JobUtils - fail");
 		StringWriter out = new StringWriter();
 		out.append(message).append('\n');
 		e.printStackTrace(new PrintWriter(out));

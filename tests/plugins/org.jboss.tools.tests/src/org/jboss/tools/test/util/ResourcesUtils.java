@@ -57,7 +57,7 @@ public class ResourcesUtils {
 		throws 
 			IOException, CoreException, 
 			InvocationTargetException, InterruptedException  {
-		
+		System.out.println("ResourcesUtils");
 		return importProject(bundle, templLocation, new Path(templLocation).lastSegment(), monitor);
 	}
 
@@ -67,6 +67,7 @@ public class ResourcesUtils {
 		throws 
 			IOException, CoreException, 
 			InvocationTargetException, InterruptedException  {
+		System.out.println("ResourcesUtils");
 		return importProject( 
 			bundle, templLocation, projectName, 
 			monitor,false); 
@@ -79,7 +80,7 @@ public class ResourcesUtils {
 		throws 
 			IOException, CoreException, 
 			InvocationTargetException, InterruptedException  {
-		
+		System.out.println("ResourcesUtils");
 		String tplPrjLcStr;
 			tplPrjLcStr = FileLocator.resolve(bundle.getEntry(templLocation))
 				.getFile();
@@ -90,12 +91,13 @@ public class ResourcesUtils {
 	
 	public static IProject importProject( 
 			Bundle bundle, String templLocation) throws IOException, CoreException, InvocationTargetException, InterruptedException {
+		System.out.println("ResourcesUtils");
 		return importProject(bundle, templLocation, new NullProgressMonitor());
 	}
 	
 	public static IProject createEclipseProject(String projectName,
 			IProgressMonitor monitor) throws CoreException {
-
+		System.out.println("ResourcesUtils");
 		IProject newProjectHandle = ResourcesPlugin.getWorkspace().getRoot()
 				.getProject(projectName);
 
@@ -110,7 +112,7 @@ public class ResourcesUtils {
 	public static IProject createEclipseProject(Bundle bundle,
 			String templateLocation, IProgressMonitor monitor)
 			throws CoreException, IOException {
-
+		System.out.println("ResourcesUtils");
 		IPath tplPrjDescr = new Path(templateLocation)
 				.append(IProjectDescription.DESCRIPTION_FILE_NAME);
 		IProjectDescription descr = ResourcesPlugin.getWorkspace()
@@ -126,6 +128,7 @@ public class ResourcesUtils {
 	
 	public static IProject createEclipseProject(String name)
 			throws CoreException, IOException {
+		System.out.println("ResourcesUtils");
 		String descriptionText = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><projectDescription><name>{0}</name></projectDescription>";
 		IProjectDescription descr = ResourcesPlugin.getWorkspace().loadProjectDescription(new StringBufferInputStream(MessageFormat.format(descriptionText,name)));
 		descr.setLocation(null);
@@ -142,18 +145,20 @@ public class ResourcesUtils {
 	public static IProject createEclipseProject(Bundle bundle,
 			String templateLocation)
 			throws CoreException, IOException {
-
+		System.out.println("ResourcesUtils");
 		return createEclipseProject(bundle,templateLocation, new NullProgressMonitor());
 	}
 	
 	public static IProject createEclipseProject(String bundle,
 			String templateLocation, IProgressMonitor monitor)
 			throws CoreException, IOException {
+		System.out.println("ResourcesUtils");
 		return createEclipseProject(
 				Platform.getBundle(bundle), templateLocation, monitor);
 	}
 	
 	public static boolean findLineInFile(IFile file, String pattern) throws CoreException, IOException {
+		System.out.println("ResourcesUtils");
 		InputStream content = null;
 		InputStreamReader isr = null;
 		boolean patternIsFound = false;
@@ -200,6 +205,7 @@ public class ResourcesUtils {
 	 */
 	public static IProject importProject(String bundleName, String templatePath,
 			IProgressMonitor monitor) throws IOException, CoreException, InvocationTargetException, InterruptedException {
+		System.out.println("ResourcesUtils");
 		Bundle bundle = Platform.getBundle(bundleName);
 		if (bundle == null)
 			return null;
@@ -207,6 +213,7 @@ public class ResourcesUtils {
 	}
 	
 	public static IProject importProject(String bundleName, String templatePath) throws IOException, CoreException, InvocationTargetException, InterruptedException {
+		System.out.println("ResourcesUtils");
 		Bundle bundle = Platform.getBundle(bundleName);
 		if (bundle == null)
 			return null;
@@ -214,6 +221,7 @@ public class ResourcesUtils {
 	}
 	
 	public static void deleteProject(String projectName) throws CoreException {
+		System.out.println("ResourcesUtils");
 		IResource member = ResourcesPlugin.getWorkspace().getRoot().findMember(projectName);
 		if (member != null) {
 			try { 
@@ -228,6 +236,7 @@ public class ResourcesUtils {
 	}
 	
 	public static boolean setBuildAutomatically(boolean state)  throws CoreException {
+		System.out.println("ResourcesUtils");
 	       boolean oldAutoBuilding;
 	       IWorkspace workspace = ResourcesPlugin.getWorkspace();
 	       IWorkspaceDescription description = workspace.getDescription();
@@ -242,6 +251,7 @@ public class ResourcesUtils {
 	private static final long IMPORT_DELAY = 200;
 	
 	static public IProject importProjectIntoWorkspace(String path, String projectName) { 
+		System.out.println("ResourcesUtils");
 		return importProjectIntoWorkspace(path, projectName,"file");
 	}
 
@@ -253,6 +263,7 @@ public class ResourcesUtils {
 	 * @param protocol 
 	 */
 	static public IProject importProjectIntoWorkspace(String path, String projectName, String protocol) {
+		System.out.println("ResourcesUtils");
 		return importProjectIntoWorkspace(path, projectName, protocol, false);
 	}
 	
@@ -264,7 +275,7 @@ public class ResourcesUtils {
 	 * @param protocol 
 	 */
 	static public IProject importProjectIntoWorkspace(String path, String projectName, String protocol, boolean skipWaitForIdle) {
-	
+		System.out.println("ResourcesUtils");
 	IProject project = null;
 	
 		try {
@@ -339,6 +350,7 @@ public class ResourcesUtils {
 
 	private static ZipEntry getZipEntry(
 			ZipFileStructureProvider zipStrProvider, String zipEntryName) {
+		System.out.println("ResourcesUtils");
 		String[] entries = zipEntryName.split("/");
 		ZipEntry parent = zipStrProvider.getRoot();
 		for (String string : entries) {

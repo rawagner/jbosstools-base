@@ -25,6 +25,7 @@ public class AbstractRuntimeTest extends TestCase{
 	 * @param featureId
 	 */
 	public Bundle getFirstBundleFor(String featureId) {
+		System.out.println("AbstractRuntimeTest");
 		IBundleGroupProvider[] providers = Platform.getBundleGroupProviders();
 		System.out.println(providers.length);
 		IBundleGroup iBundleGroup = getFirstBundleGroupFor(featureId);
@@ -37,6 +38,7 @@ public class AbstractRuntimeTest extends TestCase{
 
 	
 	public IBundleGroup getFirstBundleGroupFor(String featureId) {
+		System.out.println("AbstractRuntimeTest");
 		IBundleGroupProvider[] providers = Platform.getBundleGroupProviders();
 		System.out.println(providers.length);
 		for (IBundleGroupProvider iBundleGroupProvider : providers) {
@@ -56,6 +58,7 @@ public class AbstractRuntimeTest extends TestCase{
 	
 	
 	public boolean isPluginResolved(String pluginId) {
+		System.out.println("AbstractRuntimeTest");
 		Bundle bundle = Platform.getBundle(pluginId);
 		assertNotNull(pluginId + " failed to load.", bundle); //$NON-NLS-1$
 		try {

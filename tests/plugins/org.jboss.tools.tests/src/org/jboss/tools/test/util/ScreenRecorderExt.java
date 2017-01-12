@@ -71,6 +71,7 @@ public class ScreenRecorderExt extends ScreenRecorder{
               MediaType.VIDEO, EncodingKey, "black", FrameRateKey,
               Rational.valueOf(30)),
         null);
+    System.out.println("ScreenRecorderExt");
   }  
   /**
    * Creates ScreenRecorderExt instance with parametrs
@@ -86,6 +87,7 @@ public class ScreenRecorderExt extends ScreenRecorder{
       Format screenFormat, Format mouseFormat, Format audioFormat)
       throws IOException, AWTException {
     super(cfg, fileFormat, screenFormat, mouseFormat, audioFormat);
+    System.out.println("ScreenRecorderExt");
   }
 
   /**
@@ -94,6 +96,7 @@ public class ScreenRecorderExt extends ScreenRecorder{
    * @throws IOException
    */
   public void start(String fileName) throws IOException{
+	  System.out.println("ScreenRecorderExt");
     this.useFileName = fileName;
     super.start();
   }
@@ -103,6 +106,7 @@ public class ScreenRecorderExt extends ScreenRecorder{
    */
   @Override
   public void start() throws IOException{
+	  System.out.println("ScreenRecorderExt");
     this.useFileName = null;
     super.start();
   }
@@ -113,6 +117,7 @@ public class ScreenRecorderExt extends ScreenRecorder{
    */
   @Override
   protected File createMovieFile(Format fileFormat) throws IOException {
+	  System.out.println("ScreenRecorderExt");
     File fileToWriteMovie;
     if (this.useFileName == null || this.useFileName.length() == 0){
       fileToWriteMovie = super.createMovieFile(fileFormat);
@@ -136,6 +141,7 @@ public class ScreenRecorderExt extends ScreenRecorder{
    * @return
    */
   public boolean isState(String state) {
+	  System.out.println("ScreenRecorderExt");
     boolean result = false;
     
     if (state.equals(ScreenRecorderExt.STATE_DONE) && getState().equals(State.DONE)){
@@ -156,6 +162,7 @@ public class ScreenRecorderExt extends ScreenRecorder{
    */
   @Override
   public void stop() throws IOException{
+	  System.out.println("ScreenRecorderExt");
     super.stop();
   }
 

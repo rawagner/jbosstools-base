@@ -38,9 +38,12 @@ public class TestDescription extends Properties {
 
 	String name;
 	
-	public TestDescription() {}
+	public TestDescription() {
+		System.out.println("TestDescription");
+	}
 	
 	public TestDescription(Element t) {
+		System.out.println("TestDescription");
 		name = t.getAttribute("name");
 		Element[] ps = XMLUtilities.getChildren(t, "property");
 		for (int i = 0; i < ps.length; i++) {
@@ -51,6 +54,7 @@ public class TestDescription extends Properties {
 	}
 	
 	public String getName() {
+		System.out.println("TestDescription");
 		return name;
 	}
 	
